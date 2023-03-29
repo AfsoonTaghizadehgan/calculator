@@ -4,22 +4,30 @@ import buttonArray from './Buttons'
 
 export default function Calculator(){
    
+    //for any user input
     const[typed, setTyped]= React.useState({
         number: "",
         operation: "",
     })
+
+    //first number before the operation which is based on typed.number
     const[firstNumber, setFirstNumber]=React.useState(0)
+
+    //result after clicking = button
     const[result, setResult]=React.useState("")
 
-    console.log("first Number", firstNumber)
-    console.log("number", typed.number)
-    console.log("result", result)
-
+ 
 
     function clickButton(value, type){
+        //operations include "+-/*=.AC%"
         if(type === "Operation"){
             if(value === "%"){
-                setResult(parseInt(typed.number) / 100)}
+                setResult(parseFloat(typed.number) / 100)
+                setTyped(preveState => ({
+                    ...preveState,
+                    number: parseFloat(typed.number) / 100
+                    }))
+            }
             else if (value === "AC"){
                 setResult("")
                 setTyped(preveState => ({
@@ -28,12 +36,16 @@ export default function Calculator(){
                     operation: ""}))
                 setFirstNumber(0)
             }
+
+            //changing sign of the entered value
             else if (value === "+/-"){
                 setTyped(preveState => ({
                     ...preveState,
                     number: -parseFloat(typed.number),
                     operation: ""}))
+                    setResult(preveState => -preveState)
             }
+            //making float numbers
             else if (value === "."){
                 setTyped(preveState => ({
                     ...preveState,
@@ -48,6 +60,8 @@ export default function Calculator(){
                     number: "",
                     operation: value}))}         
         }
+
+        //making the number
         else{
            setTyped(preveState => ({
                 ...preveState,
@@ -56,6 +70,7 @@ export default function Calculator(){
         }
 
         if(value === "="){
+            //setting the result and also make the result as the typed.number for following calculations
             if(typed.operation === "+"){
                 setResult((parseFloat(firstNumber) + parseFloat(typed.number)).toString())
                 setTyped(preveState => ({
@@ -84,6 +99,7 @@ export default function Calculator(){
         
        
 
+        //making buttons based on the Button.js file
     const buttons= buttonArray.map((e)=>{  
         return (
             <div 
@@ -98,7 +114,8 @@ export default function Calculator(){
     return(
 
         <div className='calculator'>
-        <input className='entry' onChange={setTyped} value={result || typed.number || firstNumber }/>
+            {/* Calculator screen section which shows the typed number or results or the first number */}
+        <input className='entry' onChange={setTyped} value={ typed.number || result || firstNumber }/>
         {buttons}
         </div>
     )
