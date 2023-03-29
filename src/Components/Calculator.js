@@ -9,16 +9,19 @@ export default function Calculator(){
         operation: "",
     })
     const[firstNumber, setFirstNumber]=React.useState(0)
-    const[result, setResult]=React.useState(0)
-    //me
-    console.log("result2 ", result)
+    const[result, setResult]=React.useState("")
+
+    console.log("first Number", firstNumber)
+    console.log("number", typed.number)
+    console.log("result", result)
+
 
     function clickButton(value, type){
         if(type === "Operation"){
             if(value === "%"){
                 setResult(parseInt(typed.number) / 100)}
             else if (value === "AC"){
-                setResult(0)
+                setResult("")
                 setTyped(preveState => ({
                     ...preveState,
                     number: "",
@@ -34,8 +37,8 @@ export default function Calculator(){
             else if (value === "."){
                 setTyped(preveState => ({
                     ...preveState,
-                    number: typed.number + value,
-                    operation: ""}))
+                    number: typed.number + value
+                    }))
 
             }    
             else {
@@ -52,28 +55,34 @@ export default function Calculator(){
                   
         }
 
-         if(value === "="){
-            console.log("first number is " , firstNumber)
-            //me
-            console.log("result " , result)
-
-            console.log("second number is " , typed.number)
-            console.log(parseFloat(firstNumber) + parseFloat(typed.number))
-
+        if(value === "="){
             if(typed.operation === "+"){
-                setResult(parseFloat(firstNumber) + parseFloat(typed.number) )
+                setResult((parseFloat(firstNumber) + parseFloat(typed.number)).toString())
+                setTyped(preveState => ({
+                    ...preveState,
+                    number: (parseFloat(firstNumber) + parseFloat(typed.number)).toString()}))
             }
             else if(typed.operation === "-"){
-                setResult((parseFloat(firstNumber) - parseFloat(typed.number)))}
+                setResult(((parseFloat(firstNumber) - parseFloat(typed.number))).toString())
+                setTyped(preveState => ({
+                    ...preveState,
+                    number: (parseFloat(firstNumber) - parseFloat(typed.number)).toString()}))}
             else if(typed.operation === "/"){
-                setResult((parseFloat(firstNumber) / parseFloat(typed.number)))}
+                setResult(((parseFloat(firstNumber) / parseFloat(typed.number))).toString())
+                setTyped(preveState => ({
+                    ...preveState,
+                    number: (parseFloat(firstNumber) / parseFloat(typed.number)).toString()}))}
             else if(typed.operation === "X"){
-                setResult((parseFloat(firstNumber) * parseFloat(typed.number)))}
+                setResult(((parseFloat(firstNumber) * parseFloat(typed.number))).toString())
+                setTyped(preveState => ({
+                    ...preveState,
+                    number: (parseFloat(firstNumber) * parseFloat(typed.number)).toString()}))}
 
-         }
+        }
         
         }
         
+       
 
     const buttons= buttonArray.map((e)=>{  
         return (
