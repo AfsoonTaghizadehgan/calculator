@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "//afsoontaghizadehgan.github.io/calculator/static/css/main.271e88aa.css",
+    "main.js": "//afsoontaghizadehgan.github.io/calculator/static/js/main.79e8cae3.js",
+    "static/js/787.a174f9e5.chunk.js": "//afsoontaghizadehgan.github.io/calculator/static/js/787.a174f9e5.chunk.js",
+    "index.html": "//afsoontaghizadehgan.github.io/calculator/index.html",
+    "main.271e88aa.css.map": "//afsoontaghizadehgan.github.io/calculator/static/css/main.271e88aa.css.map",
+    "main.79e8cae3.js.map": "//afsoontaghizadehgan.github.io/calculator/static/js/main.79e8cae3.js.map",
+    "787.a174f9e5.chunk.js.map": "//afsoontaghizadehgan.github.io/calculator/static/js/787.a174f9e5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.271e88aa.css",
+    "static/js/main.79e8cae3.js"
+  ]
+}
